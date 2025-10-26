@@ -87,7 +87,7 @@ const getTextColor = ({
     return theme.colors.disabled;
   }
 
-  if (isSelectedColor) {
+  if (isSelectedColor && selected) {
     return color(selectedColor).alpha(0.87).rgb().string();
   }
 
