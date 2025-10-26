@@ -272,6 +272,7 @@ describe('getChipColors - icon color', () => {
         theme: getTheme(),
         selectedColor: 'purple',
         isOutlined: false,
+        selected: true,
       })
     ).toMatchObject({
       iconColor: 'purple',
@@ -284,6 +285,7 @@ describe('getChipColors - icon color', () => {
         theme: getTheme(false, false),
         selectedColor: 'purple',
         isOutlined: false,
+        selected: true,
       })
     ).toMatchObject({
       iconColor: color('purple').alpha(0.54).rgb().string(),
@@ -326,6 +328,7 @@ describe('getChipColors - ripple color', () => {
         theme: getTheme(),
         selectedColor: 'purple',
         isOutlined: false,
+        selected: true,
       })
     ).toMatchObject({
       rippleColor: color('purple').alpha(0.12).rgb().string(),
@@ -338,6 +341,7 @@ describe('getChipColors - ripple color', () => {
         theme: getTheme(false, false),
         selectedColor: 'purple',
         isOutlined: false,
+        selected: true,
       })
     ).toMatchObject({
       rippleColor: color('purple').fade(0.5).rgb().string(),
