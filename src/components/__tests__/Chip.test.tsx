@@ -152,7 +152,7 @@ describe('getChipColors - text color', () => {
     });
   });
 
-  it('should return custom color, for theme version 3', () => {
+  it('should return custom color, for theme version 3, when selected', () => {
     expect(
       getChipColors({
         theme: getTheme(),
@@ -165,14 +165,41 @@ describe('getChipColors - text color', () => {
     });
   });
 
-  it('should return custom color, for theme version 2', () => {
+  it('should not return custom color, for theme version 3, when unselected', () => {
+    expect(
+      getChipColors({
+        theme: getTheme(),
+        selectedColor: 'purple',
+        isOutlined: false,
+        selected: false,
+      })
+    ).not.toMatchObject({
+      textColor: 'purple',
+    });
+  });
+
+  it('should return custom color, for theme version 2, when selected', () => {
     expect(
       getChipColors({
         theme: getTheme(false, false),
         selectedColor: 'purple',
         isOutlined: false,
+        selected: true,
       })
     ).toMatchObject({
+      textColor: color('purple').alpha(0.87).rgb().string(),
+    });
+  });
+
+  it('should not return custom color, for theme version 2, when unselected', () => {
+    expect(
+      getChipColors({
+        theme: getTheme(false, false),
+        selectedColor: 'purple',
+        isOutlined: false,
+        selected: false,
+      })
+    ).not.toMatchObject({
       textColor: color('purple').alpha(0.87).rgb().string(),
     });
   });
