@@ -216,6 +216,7 @@ const getIconColor = ({
   isOutlined,
   disabled,
   selectedColor,
+  selected,
 }: BaseProps & {
   selectedColor?: string;
 }) => {
@@ -225,7 +226,7 @@ const getIconColor = ({
       return theme.colors.onSurfaceDisabled;
     }
 
-    if (isSelectedColor) {
+    if (isSelectedColor && selected) {
       return selectedColor;
     }
 
@@ -240,7 +241,7 @@ const getIconColor = ({
     return theme.colors.disabled;
   }
 
-  if (isSelectedColor) {
+  if (isSelectedColor && selected) {
     return color(selectedColor).alpha(0.54).rgb().string();
   }
 
