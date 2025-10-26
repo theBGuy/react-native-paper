@@ -274,14 +274,14 @@ const getRippleColor = ({
   });
 
   if (theme.isV3) {
-    if (isSelectedColor) {
+    if (isSelectedColor && selected) {
       return color(selectedColor).alpha(0.12).rgb().string();
     }
 
     return color(textColor).alpha(0.12).rgb().string();
   }
 
-  if (isSelectedColor) {
+  if (isSelectedColor && selected) {
     return color(selectedColor).fade(0.5).rgb().string();
   }
 
