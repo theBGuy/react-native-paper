@@ -144,7 +144,9 @@ export type Props = $Omit<React.ComponentProps<typeof Surface>, 'mode'> & {
   /**
    * @optional
    * Theme object containing styling properties. The following theme properties are used:
+   *
    * **V3 Theme:**
+   *
    * - `colors.onSurfaceDisabled` - Text and icon color when disabled
    * - `colors.onSurfaceVariant` - Text/icon color for outlined mode, disabled border color, overlay mixing
    * - `colors.outline` - Border color for outlined mode (when not disabled/selected)
@@ -152,7 +154,9 @@ export type Props = $Omit<React.ComponentProps<typeof Surface>, 'mode'> & {
    * - `colors.secondaryContainer` - Background color for flat mode
    * - `colors.onSecondaryContainer` - Text/icon color for flat mode, overlay mixing
    * - `colors.primary` - Icon color when not disabled (for custom icons)
+   *
    * **V2 Theme:**
+   *
    * - `colors.disabled` - Text and icon color when disabled
    * - `colors.text` - Base text and icon color (with alpha applied)
    * - `colors.surface` - Background color for outlined mode
