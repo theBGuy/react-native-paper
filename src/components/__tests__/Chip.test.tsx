@@ -158,6 +158,7 @@ describe('getChipColors - text color', () => {
         theme: getTheme(),
         selectedColor: 'purple',
         isOutlined: false,
+        selected: true,
       })
     ).toMatchObject({
       textColor: 'purple',
@@ -422,9 +423,10 @@ describe('getChipColor - selected background color', () => {
         theme: getTheme(),
         customBackgroundColor: 'purple',
         isOutlined: true,
+        selected: true,
       })
     ).toMatchObject({
-      selectedBackgroundColor: color('purple')
+      backgroundColor: color('purple')
         .mix(color(getTheme().colors.onSurfaceVariant), 0)
         .rgb()
         .string(),
@@ -437,9 +439,10 @@ describe('getChipColor - selected background color', () => {
         theme: getTheme(),
         customBackgroundColor: 'purple',
         isOutlined: false,
+        selected: true,
       })
     ).toMatchObject({
-      selectedBackgroundColor: color('purple')
+      backgroundColor: color('purple')
         .mix(color(getTheme().colors.onSecondaryContainer), 0)
         .rgb()
         .string(),
@@ -453,9 +456,10 @@ describe('getChipColor - selected background color', () => {
         customBackgroundColor: 'purple',
         showSelectedOverlay: true,
         isOutlined: true,
+        selected: true,
       })
     ).toMatchObject({
-      selectedBackgroundColor: color('purple')
+      backgroundColor: color('purple')
         .mix(color(getTheme().colors.onSurfaceVariant), 0.12)
         .rgb()
         .string(),
@@ -469,9 +473,10 @@ describe('getChipColor - selected background color', () => {
         customBackgroundColor: 'purple',
         showSelectedOverlay: true,
         isOutlined: false,
+        selected: true,
       })
     ).toMatchObject({
-      selectedBackgroundColor: color('purple')
+      backgroundColor: color('purple')
         .mix(color(getTheme().colors.onSecondaryContainer), 0.12)
         .rgb()
         .string(),
@@ -483,9 +488,10 @@ describe('getChipColor - selected background color', () => {
       getChipColors({
         theme: getTheme(),
         isOutlined: true,
+        selected: true,
       })
     ).toMatchObject({
-      selectedBackgroundColor: color(getTheme().colors.surface)
+      backgroundColor: color(getTheme().colors.surface)
         .mix(color(getTheme().colors.onSurfaceVariant), 0)
         .rgb()
         .string(),
@@ -497,9 +503,10 @@ describe('getChipColor - selected background color', () => {
       getChipColors({
         theme: getTheme(),
         isOutlined: false,
+        selected: true,
       })
     ).toMatchObject({
-      selectedBackgroundColor: color(getTheme().colors.secondaryContainer)
+      backgroundColor: color(getTheme().colors.secondaryContainer)
         .mix(color(getTheme().colors.onSecondaryContainer), 0)
         .rgb()
         .string(),
@@ -512,9 +519,10 @@ describe('getChipColor - selected background color', () => {
         theme: getTheme(false, false),
         customBackgroundColor: 'purple',
         isOutlined: true,
+        selected: true,
       })
     ).toMatchObject({
-      selectedBackgroundColor: color('purple').darken(0.08).rgb().string(),
+      backgroundColor: color('purple').darken(0.08).rgb().string(),
     });
   });
 
@@ -524,9 +532,10 @@ describe('getChipColor - selected background color', () => {
         theme: getTheme(false, false),
         customBackgroundColor: 'purple',
         isOutlined: false,
+        selected: true,
       })
     ).toMatchObject({
-      selectedBackgroundColor: color('purple').darken(0.2).rgb().string(),
+      backgroundColor: color('purple').darken(0.2).rgb().string(),
     });
   });
 
@@ -536,9 +545,10 @@ describe('getChipColor - selected background color', () => {
         theme: getTheme(true, false),
         customBackgroundColor: 'purple',
         isOutlined: true,
+        selected: true,
       })
     ).toMatchObject({
-      selectedBackgroundColor: color('purple').lighten(0.2).rgb().string(),
+      backgroundColor: color('purple').lighten(0.2).rgb().string(),
     });
   });
 
@@ -548,9 +558,10 @@ describe('getChipColor - selected background color', () => {
         theme: getTheme(true, false),
         customBackgroundColor: 'purple',
         isOutlined: false,
+        selected: true,
       })
     ).toMatchObject({
-      selectedBackgroundColor: color('purple').lighten(0.4).rgb().string(),
+      backgroundColor: color('purple').lighten(0.4).rgb().string(),
     });
   });
 
@@ -559,9 +570,10 @@ describe('getChipColor - selected background color', () => {
       getChipColors({
         theme: getTheme(false, false),
         isOutlined: true,
+        selected: true,
       })
     ).toMatchObject({
-      selectedBackgroundColor: color(getTheme(false, false).colors.surface)
+      backgroundColor: color(getTheme(false, false).colors.surface)
         .darken(0.08)
         .rgb()
         .string(),
@@ -573,9 +585,10 @@ describe('getChipColor - selected background color', () => {
       getChipColors({
         theme: getTheme(false, false),
         isOutlined: false,
+        selected: true,
       })
     ).toMatchObject({
-      selectedBackgroundColor: color('#ebebeb').darken(0.2).rgb().string(),
+      backgroundColor: color('#ebebeb').darken(0.2).rgb().string(),
     });
   });
 
@@ -584,9 +597,36 @@ describe('getChipColor - selected background color', () => {
       getChipColors({
         theme: getTheme(true, false),
         isOutlined: false,
+        selected: true,
       })
     ).toMatchObject({
-      selectedBackgroundColor: color('#383838').lighten(0.4).rgb().string(),
+      backgroundColor: color('#383838').lighten(0.4).rgb().string(),
+    });
+  });
+
+  it('should return custom selectedBackgroundColor when provided & chip is selected', () => {
+    expect(
+      getChipColors({
+        theme: getTheme(),
+        customSelectedBackgroundColor: 'red',
+        isOutlined: false,
+        selected: true,
+      })
+    ).toMatchObject({
+      backgroundColor: 'red',
+    });
+  });
+
+  it('should return custom selectedBackgroundColor for version 2 theme, when chip is selected', () => {
+    expect(
+      getChipColors({
+        theme: getTheme(false, false),
+        customSelectedBackgroundColor: 'red',
+        isOutlined: false,
+        selected: true,
+      })
+    ).toMatchObject({
+      backgroundColor: 'red',
     });
   });
 });
@@ -673,15 +713,31 @@ describe('getChipColor - border color', () => {
     });
   });
 
-  it('should return custom color, for theme version 3', () => {
+  it('should return custom color, for theme version 3, when selected', () => {
     expect(
       getChipColors({
         theme: getTheme(),
         selectedColor: 'purple',
         isOutlined: false,
+        selected: true,
       })
     ).toMatchObject({
       borderColor: 'transparent',
+      textColor: 'purple',
+    });
+  });
+
+  it('should return theme color, for theme version 3, when unselected', () => {
+    expect(
+      getChipColors({
+        theme: getTheme(false, true),
+        selectedColor: 'purple',
+        isOutlined: false,
+        selected: false,
+      })
+    ).toMatchObject({
+      borderColor: 'transparent',
+      textColor: getTheme(false, true).colors.onSecondaryContainer,
     });
   });
 
