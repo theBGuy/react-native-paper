@@ -789,6 +789,7 @@ describe('getChipColor - border color', () => {
         theme: getTheme(false, false),
         selectedColor: 'purple',
         isOutlined: true,
+        selected: true,
       })
     ).toMatchObject({
       borderColor: color('purple').alpha(0.29).rgb().string(),

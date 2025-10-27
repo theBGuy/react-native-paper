@@ -22,6 +22,7 @@ const getBorderColor = ({
   disabled,
   selectedColor,
   backgroundColor,
+  selected,
 }: BaseProps & { backgroundColor: string; selectedColor?: string }) => {
   const isSelectedColor = selectedColor !== undefined;
 
@@ -35,7 +36,7 @@ const getBorderColor = ({
       return color(theme.colors.onSurfaceVariant).alpha(0.12).rgb().string();
     }
 
-    if (isSelectedColor) {
+    if (isSelectedColor && selected) {
       return color(selectedColor).alpha(0.29).rgb().string();
     }
 
@@ -43,7 +44,7 @@ const getBorderColor = ({
   }
 
   if (isOutlined) {
-    if (isSelectedColor) {
+    if (isSelectedColor && selected) {
       return color(selectedColor).alpha(0.29).rgb().string();
     }
 
